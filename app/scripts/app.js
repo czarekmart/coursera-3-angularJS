@@ -158,26 +158,33 @@ var app = angular.module('confusionApp', [])
 
     .controller('DishCommentController', ['$scope', function($scope) {
 
-        $scope.comment = {
-            customerName: "",
-            rating: "5",
-            comments: ""
+        var resetComment = function() {
+
+            $scope.comment = {
+                author: "",
+                rating: 5,
+                comment: ""
+            };
         };
+
+        resetComment();
 
         $scope.submitComment = function () {
 
             console.log("Your comment:", $scope.comment);
 
                 $scope.dish.comments.push({
-                    rating: Number($scope.comment.rating),
-                    comment: $scope.comment.comments,
-                    author: $scope.comment.customerName,
+                    rating: $scope.comment.rating,
+                    comment: $scope.comment.comment,
+                    author: $scope.comment.author,
                     date: new Date().toISOString()
                 });
 
-                //Step 4: reset your form to pristine
+            //Step 4: reset your form to pristine
+            $scope.commentForm.$setPristine();
 
-                //Step 5: reset your JavaScript object that holds your comment
-            }
+            //Step 5: reset your JavaScript object that holds your comment
+            resetComment();
+        }
     }]);
 

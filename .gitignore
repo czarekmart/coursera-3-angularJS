@@ -10,5 +10,6 @@ app/*.png
 dist
 node_modules
 .tmp
-
+week-2-assignment/*.png
+week-2-others
 
