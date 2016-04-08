@@ -105,6 +105,17 @@ angular.module('confusionApp')
             //Step 5: reset your JavaScript object that holds your comment
             resetComment();
         }
-    }]);
+    }])
+
+    // implement the IndexController and About Controller here
+    .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
+        $scope.featuredDish = menuFactory.getDish(0);
+        $scope.featuredPromotion = menuFactory.getPromotion(0);
+        $scope.executiveChef = corporateFactory.getLeader(3);
+    }])
+
+    .controller('AboutController', ['$scope', function($scope) {
+    }])
+;
 
 

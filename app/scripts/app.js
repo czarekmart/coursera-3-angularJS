@@ -8,23 +8,26 @@ angular.module('confusionApp', ['ui.router'])
                 url:'/',
                 views: {
                     'header': {
-                        templateUrl : 'views/header.html'
+                        templateUrl : 'views/header.html',
                     },
                     'content': {
-                        template : '<h1>To be Completed</h1>',
-                        controller  : 'IndexController'
+                        //template: '<h2>Home Page</h2>'
+                        templateUrl : 'views/home.html',
+                        controller  : 'IndexController',
                     },
                     'footer': {
-                        templateUrl : 'views/footer.html'
+                        templateUrl : 'views/footer.html',
                     }
                 }
             })
+
             // route for the aboutus page
             .state('app.aboutus', {
                 url:'aboutus',
                 views: {
                     'content@': {
-                        template: '<h1>To be Completed</h1>'
+                        templateUrl : 'views/aboutus.html',
+                        controller  : 'AboutController',
                     }
                 }
             })
