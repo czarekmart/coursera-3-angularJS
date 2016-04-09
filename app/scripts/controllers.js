@@ -114,7 +114,8 @@ angular.module('confusionApp')
         $scope.executiveChef = corporateFactory.getLeader(3);
     }])
 
-    .controller('AboutController', ['$scope', function($scope) {
+    .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+        $scope.leaders = corporateFactory.getLeaders();
     }])
 ;
 

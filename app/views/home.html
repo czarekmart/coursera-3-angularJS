@@ -2,13 +2,13 @@
 <div class="container" ng-controller="IndexController">
     <div class="row row-content">
         <div class="col-xs-12 col-sm-3 col-sm-push-9">
-            <p style="padding:20px;"></p>
+            <p style="padding:10px;"></p>
             <h3 align=center>Our Lipsmacking Culinary Creations</h3>
         </div>
         <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
                 <div class="media-left media-middle">
-                    <a href="#">
+                    <a ui-sref="app.dishdetails({id: featuredDish._id})">
                         <img class="media-object img-thumbnail"
                              ng-src="{{featuredDish.image}}"
                              alt="{{featuredDish.name}}">
@@ -17,7 +17,6 @@
                 <div class="media-body">
                     <h2 class="media-heading">{{featuredDish.name}} <span class="label label-danger">{{featuredDish.label}}</span> <span class="badge">{{featuredDish.price | currency}}</span></h2>
                     <p>{{featuredDish.description}}</p>
-                    <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
                 </div>
             </div>
         </div>
@@ -25,7 +24,7 @@
 
     <div class="row row-content">
         <div class="col-xs-12 col-sm-3">
-            <p style="padding:20px;"></p>
+            <p style="padding:10px;"></p>
             <h3 align=center>This Month's Promotions</h3>
         </div>
         <div class="col-xs-12 col-sm-9">
@@ -34,7 +33,6 @@
                 <div class="media-body">
                     <h2 class="media-heading">{{featuredPromotion.name}} <span class="label label-danger">{{featuredPromotion.label}}</span></h2>
                     <p>{{featuredPromotion.description}}</p>
-                    <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
                 </div>
                 <div class="media-right">
                     <a href="#">
@@ -48,22 +46,20 @@
 
     <div class="row row-content">
         <div class="col-xs-12 col-sm-3 col-sm-push-9">
-            <p style="padding:20px;"></p>
+            <p style="padding:10px;"></p>
             <h3 align=center>Meet our Culinary Specialists</h3>
         </div>
         <div class="col-xs-12 col-sm-9 col-sm-pull-3">
             <div class="media">
                 <div class="media-left media-middle">
-                    <a href="#">
+
                         <img class="media-object img-thumbnail"
                              ng-src="{{executiveChef.image}}" alt="{{executiveChef.name}}">
-                    </a>
+
                 </div>
                 <div class="media-body">
-                    <h2 class="media-heading">{{executiveChef.name}}</h2>
-                    <h4>{{executiveChef.designation}}</h4>
+                    <h3 class="media-heading">{{executiveChef.name}}&nbsp;&nbsp;<small>{{executiveChef.designation}}</small></h3>
                     <p>{{executiveChef.description}}</p>
-                    <p><a class="btn btn-primary btn-xs" href="#">More &raquo;</a></p>
                 </div>
             </div>
         </div>
