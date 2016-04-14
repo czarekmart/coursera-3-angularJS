@@ -1,5 +1,12 @@
 'use strict';
 
+function formatError(response) {
+
+    var statusText = response.statusText || "Did you call 'json-server --watch db.json'?";
+    var message = "Error '" + response.status + "'. " + statusText;
+    return message;
+};
+
 angular.module('confusionApp')
 
     .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory){
@@ -10,13 +17,9 @@ angular.module('confusionApp')
 
         $scope.showDetails = false;
 
-        $scope.dishes= [];
-        menuFactory.getDishes()
-            .then(
-            function(response) {
-                $scope.dishes = response.data;
-            }
-        );
+        $scope.showMenu = true;
+        $scope.message = "Loading ...";
+        $scope.dishes= menuFactory.getDishes().query();
 
         $scope.select = function(setTab) {
             $scope.tab = setTab;
@@ -79,14 +82,11 @@ angular.module('confusionApp')
     }])
 
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
-        $scope.dish = {};
-        menuFactory.getDish(parseInt($stateParams.id,10))
-            .then(
-            function(response){
-                $scope.dish = response.data;
-                $scope.showDish=true;
-            }
-        );
+
+        $scope.showDish = true;
+        $scope.message="Loading ...";
+        $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10) });
+
     }])
 
     .controller('DishCommentController', ['$scope', function($scope) {
@@ -124,15 +124,9 @@ angular.module('confusionApp')
     // implement the IndexController and About Controller here
     .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
-        $scope.featuredDish = {};
-
-        menuFactory.getDish(0)
-            .then(
-            function(response){
-                $scope.featuredDish = response.data;
-                $scope.showDish = true;
-            }
-        );
+        $scope.showDish = true;
+        $scope.message="Loading ...";
+        $scope.dish = menuFactory.getDishes().get({id:0});
 
         $scope.featuredPromotion = menuFactory.getPromotion(0);
         $scope.executiveChef = corporateFactory.getLeader(3);

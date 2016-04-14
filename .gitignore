@@ -13,5 +13,7 @@ node_modules
 week-2-assignment/*.png
 week-2-others
 json-server
+~*.docx
+
 
 
